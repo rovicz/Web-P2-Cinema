@@ -1,32 +1,90 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 export function Navbar() {
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `nav-link d-flex align-items-center ${isActive ? "active" : ""}`;
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <nav className="navbar navbar-expand-lg navbar-dark shadow-sm">
       <div className="container">
-        <Link className="navbar-brand" to="/">
-          CineWeb
-        </Link>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <NavLink className="navbar-brand d-flex align-items-center" to="/">
+          <i className="bi bi-camera-reels me-2 fs-4"></i>
+          <span className="fs-4">CineWeb</span>
+        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded={!isNavCollapsed}
+          aria-label="Toggle navigation"
+          onClick={handleNavCollapse}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
+          id="navbarNav"
+        >
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/filmes">
+              <NavLink to="/" className={getLinkClass} end>
+                <i className="bi bi-house-door me-2"></i>
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/filmes" className={getLinkClass}>
+                <i className="bi bi-film me-2"></i>
                 Filmes
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/salas">
+              <NavLink to="/salas" className={getLinkClass}>
+                <i className="bi bi-door-open me-2"></i>
                 Salas
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/sessoes">
+              <NavLink to="/sessoes" className={getLinkClass}>
+                <i className="bi bi-calendar-event me-2"></i>
                 Sessões
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
       </div>
+      <style>
+        {`
+          .navbar {
+            background-color: var(--bs-tertiary-bg);
+            border-bottom: 1px solid var(--bs-border-color);
+          }
+          .nav-link {
+            color: var(--bs-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+          }
+          .nav-link:hover {
+            color: var(--bs-body-color);
+            background-color: var(--bs-light);
+          }
+          .nav-link.active {
+            color: var(--bs-body-color);
+            background-color: var(--bs-primary);
+          }
+          .navbar-brand {
+            color: var(--bs-primary);
+          }
+        `}
+      </style>
     </nav>
   );
 }

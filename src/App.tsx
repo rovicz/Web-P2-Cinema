@@ -3,28 +3,25 @@ import { Navbar } from "./components/Navbar";
 import { Filmes } from "./pages/Filmes";
 import { Salas } from "./pages/Salas";
 import { Sessoes } from "./pages/Sessoes";
+import { Home } from "./pages/Home";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="py-4">
+      <main className="container mt-4">
         <Routes>
-          <Route
-            path="/"
-            element={
-              <div className="container">
-                <h1>Bem-vindo ao CineWeb</h1>
-              </div>
-            }
-          />
+          <Route path="/" element={<Home />} />
           <Route path="/filmes" element={<Filmes />} />
           <Route path="/salas" element={<Salas />} />
           <Route path="/sessoes" element={<Sessoes />} />
         </Routes>
-      </div>
+      </main>
+      <Toaster richColors />
     </BrowserRouter>
   );
 }
 
 export default App;
+

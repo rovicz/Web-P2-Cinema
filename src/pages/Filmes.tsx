@@ -49,11 +49,28 @@ export function Filmes() {
     }
   };
 
-  const handleDelete = async (id: number) => {
-    if (confirm("Deseja excluir?")) {
-      await fetch(`http://localhost:3000/filmes/${id}`, { method: "DELETE" });
-      setFilmes(filmes.filter((f) => f.id !== id));
-    }
+  const handleDelete = (id: number) => {
+    toast("Deseja realmente excluir este filme?", {
+      action: {
+        label: "Excluir",
+        onClick: async () => {
+          try {
+            await fetch(`http://localhost:3000/filmes/${id}`, {
+              method: "DELETE",
+            });
+            setFilmes(filmes.filter((f) => f.id !== id));
+            toast.success("Filme excluído!");
+          } catch (error) {
+            toast.error("Falha ao excluir filme.");
+            console.error(error);
+          }
+        },
+      },
+      cancel: {
+        label: "Cancelar",
+        onClick: () => {},
+      },
+    });
   };
 
   return (

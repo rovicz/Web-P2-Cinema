@@ -1,6 +1,29 @@
 {
-  "filmes": [],
-  "salas": [],
-  "sessoes": [],
+  "filmes": [
+    {
+      "id": "e2eb",
+      "titulo": "Teste de Filme",
+      "sinopse": "Sinopse de Teste",
+      "classificacao": "Livre",
+      "duracao": 120,
+      "genero": "Ação",
+      "dataEstreia": "2004-12-15"
+    }
+  ],
+  "salas": [
+    {
+      "id": "f158",
+      "numero": 1,
+      "capacidade": 50
+    }
+  ],
+  "sessoes": [
+    {
+      "id": "5cbf",
+      "filmeId": null,
+      "salaId": null,
+      "dataHora": "2025-12-05T19:00"
+    }
+  ],
   "ingressos": []
 }

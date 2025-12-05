@@ -37,6 +37,30 @@ export function Salas() {
     }
   };
 
+  const handleDelete = (id: number) => {
+    toast("Deseja realmente excluir esta sala?", {
+      action: {
+        label: "Excluir",
+        onClick: async () => {
+          try {
+            await fetch(`http://localhost:3000/salas/${id}`, {
+              method: "DELETE",
+            });
+            setSalas(salas.filter((s) => s.id !== id));
+            toast.success("Sala excluída!");
+          } catch (error) {
+            toast.error("Falha ao excluir sala.");
+            console.error(error);
+          }
+        },
+      },
+      cancel: {
+        label: "Cancelar",
+        onClick: () => {},
+      },
+    });
+  };
+
   return (
     <div className="container">
       <h2>Gerenciar Salas</h2>
@@ -83,10 +107,18 @@ export function Salas() {
             key={sala.id}
             className="list-group-item d-flex justify-content-between align-items-center"
           >
-            Sala {sala.numero}
-            <span className="badge bg-secondary rounded-pill">
-              Cap: {sala.capacidade}
-            </span>
+            <div>
+              Sala {sala.numero}
+              <span className="badge bg-secondary rounded-pill ms-2 text-dark">
+                Cap: {sala.capacidade}
+              </span>
+            </div>
+            <button
+              onClick={() => handleDelete(sala.id)}
+              className="btn btn-danger btn-sm"
+            >
+              <i className="bi bi-trash"></i>
+            </button>
           </li>
         ))}
       </ul>

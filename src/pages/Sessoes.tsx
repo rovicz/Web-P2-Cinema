@@ -56,28 +56,59 @@ export function Sessoes() {
     }
   };
 
-  const venderIngresso = async (sessaoId: number) => {
-    const tipo = prompt(
-      "Tipo do ingresso:\n1 - Inteira (R$ 20)\n2 - Meia (R$ 10)",
-    );
-    if (tipo === "1" || tipo === "2") {
-      const valor = tipo === "1" ? 20 : 10;
-      try {
-        await fetch("http://localhost:3000/ingressos", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            sessaoId,
-            tipo: tipo === "1" ? "Inteira" : "Meia",
-            valor,
-          }),
-        });
-        toast.success(`Ingresso vendido! Valor: R$ ${valor.toFixed(2)}`);
-      } catch (error) {
-        toast.error("Falha ao vender ingresso. Tente novamente.");
-        console.error(error);
-      }
+  const venderIngresso = (sessaoId: number) => {
+    toast("Qual tipo de ingresso deseja vender?", {
+      action: {
+        label: "Inteira (R$ 20)",
+        onClick: () => processarVenda(sessaoId, "Inteira", 20),
+      },
+      cancel: {
+        label: "Meia (R$ 10)",
+        onClick: () => processarVenda(sessaoId, "Meia", 10),
+      },
+    });
+  };
+
+  const processarVenda = async (
+    sessaoId: number,
+    tipo: string,
+    valor: number,
+  ) => {
+    try {
+      await fetch("http://localhost:3000/ingressos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessaoId, tipo, valor }),
+      });
+      toast.success(`Ingresso (${tipo}) vendido! Valor: R$ ${valor.toFixed(2)}`);
+    } catch (error) {
+      toast.error("Falha ao vender ingresso. Tente novamente.");
+      console.error(error);
     }
+  };
+
+  const handleDelete = (id: number) => {
+    toast("Deseja realmente excluir esta sessão?", {
+      action: {
+        label: "Excluir",
+        onClick: async () => {
+          try {
+            await fetch(`http://localhost:3000/sessoes/${id}`, {
+              method: "DELETE",
+            });
+            setSessoes(sessoes.filter((s) => s.id !== id));
+            toast.success("Sessão excluída!");
+          } catch (error) {
+            toast.error("Falha ao excluir sessão.");
+            console.error(error);
+          }
+        },
+      },
+      cancel: {
+        label: "Cancelar",
+        onClick: () => {},
+      },
+    });
   };
 
   const getNomeFilme = (id: number) =>
@@ -162,12 +193,20 @@ export function Sessoes() {
                 <p className="card-text">
                   Data: {new Date(sessao.dataHora).toLocaleString()}
                 </p>
-                <button
-                  onClick={() => venderIngresso(sessao.id)}
-                  className="btn btn-success"
-                >
-                  <i className="bi bi-ticket-perforated"></i> Vender Ingresso
-                </button>
+                <div>
+                  <button
+                    onClick={() => venderIngresso(sessao.id)}
+                    className="btn btn-success"
+                  >
+                    <i className="bi bi-ticket-perforated"></i> Vender Ingresso
+                  </button>
+                  <button
+                    onClick={() => handleDelete(sessao.id)}
+                    className="btn btn-danger btn-sm ms-2"
+                  >
+                    <i className="bi bi-trash"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

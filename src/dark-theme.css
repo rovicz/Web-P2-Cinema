@@ -1,22 +1,24 @@
 /* src/dark-theme.css */
 
 body {
-  /* Inspired by shadcn/ui slate dark theme */
-  --bs-body-bg: #020817; /* Background */
-  --bs-body-color: #e2e8f0; /* Foreground */
-  --bs-border-color: #1e293b; /* Border */
-  --bs-tertiary-bg: #0f172a; /* Muted */
-  --bs-emphasis-color: #f8fafc; /* Primary */
-  
-  /* Override Bootstrap colors */
-  --bs-dark: #0f172a;
-  --bs-dark-rgb: 15, 23, 42;
-  --bs-light: #1e293b;
-  --bs-light-rgb: 30, 41, 59;
-  --bs-primary: #3b82f6; /* Accent Blue */
-  --bs-primary-rgb: 59, 130, 246;
-  --bs-secondary: #94a3b8;
-  --bs-secondary-rgb: 148, 163, 184;
+  --bs-body-bg: #0a0a0a;
+  --bs-body-color: #ffffff;
+  --bs-border-color: #262626;
+  --bs-tertiary-bg: #262626;
+  --bs-emphasis-color: #ffffff;
+
+  --bs-dark: #262626;
+  --bs-dark-rgb: 38, 38, 38;
+  --bs-light: #262626;
+  --bs-light-rgb: 38, 38, 38;
+
+  --bs-primary: #ffffff;
+  --bs-primary-rgb: 255, 255, 255;
+  --bs-primary-color-text: #0a0a0a;
+
+  --bs-secondary: #404040;
+  --bs-secondary-rgb: 64, 64, 64;
+
   --bs-info: #38bdf8;
   --bs-info-rgb: 56, 189, 248;
   --bs-success: #22c55e;
@@ -27,25 +29,52 @@ body {
   --bs-danger-rgb: 239, 68, 68;
 }
 
-/* Apply the theme to the body */
 body {
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
 }
 
-/* Component specific overrides */
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: var(--bs-primary-color-text);
+}
+
+.btn-primary:hover {
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
+  color: var(--bs-primary-color-text);
+}
+
+.btn-outline-primary {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-outline-primary:hover {
+  color: var(--bs-primary-color-text);
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+
 .card {
   background-color: var(--bs-tertiary-bg);
   border: 1px solid var(--bs-border-color);
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select {
   background-color: var(--bs-tertiary-bg);
   color: var(--bs-body-color);
   border-color: var(--bs-border-color);
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   background-color: var(--bs-tertiary-bg);
   color: var(--bs-body-color);
   border-color: var(--bs-primary);
@@ -62,14 +91,21 @@ body {
   color: var(--bs-body-color);
 }
 
-.navbar-dark {
-    background-color: var(--bs-tertiary-bg) !important;
-    border-bottom: 1px solid var(--bs-border-color);
+.navbar {
+  background-color: var(--bs-body-bg) !important;
+  border-bottom: 1px solid var(--bs-border-color);
 }
 
-/* Make toast notifications dark */
+.navbar-brand {
+  color: var(--bs-primary) !important;
+}
+
 [data-sonner-toast] {
-    --normal-bg: var(--bs-tertiary-bg);
-    --normal-border: var(--bs-border-color);
-    --normal-text: var(--bs-body-color);
+  --normal-bg: var(--bs-tertiary-bg);
+  --normal-border: var(--bs-border-color);
+  --normal-text: var(--bs-body-color);
+  --success-bg: var(--bs-success);
+  --success-text: #ffffff;
+  --error-bg: var(--bs-danger);
+  --error-text: #ffffff;
 }

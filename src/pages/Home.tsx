@@ -55,7 +55,7 @@ export function Home() {
     <>
       <style>{`
         .hero-section {
-          background: linear-gradient(to top, var(--bs-body-bg) 20%, rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/020817/3b82f6?text=CineWeb') no-repeat center center;
+          background: linear-gradient(to top, var(--bs-body-bg) 20%, rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/0A0A0A/FFFFFF?text=CineWeb') no-repeat center center;
           background-size: cover;
           padding: 8rem 0;
           color: white;

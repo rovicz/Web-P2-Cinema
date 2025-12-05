@@ -32,7 +32,7 @@ export function Navbar() {
           className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
           id="navbarNav"
         >
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto gap-2">
             <li className="nav-item">
               <NavLink to="/" className={getLinkClass} end>
                 <i className="bi bi-house-door me-2"></i>

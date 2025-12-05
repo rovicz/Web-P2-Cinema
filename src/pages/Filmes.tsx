@@ -184,7 +184,7 @@ export function Filmes() {
                   <i className="bi bi-film"></i> {filme.titulo}
                 </h5>
                 <p className="card-text">{filme.sinopse}</p>
-                <p className="small text-muted">
+                <p className="small text-primary">
                   {filme.genero} | {filme.duracao} min
                 </p>
                 <button

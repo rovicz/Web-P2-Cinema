@@ -64,7 +64,6 @@ export function Navbar() {
         {`
           .navbar {
             background-color: var(--bs-tertiary-bg);
-            border-bottom: 1px solid var(--bs-border-color);
           }
           .nav-link {
             color: var(--bs-primary);

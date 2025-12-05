@@ -46,10 +46,12 @@ Conforme os requisitos funcionais, o sistema oferece:
 
 Pré-requisitos: Certifique-se de ter o **Node.js** instalado em sua máquina.
 
-### 1. Clone o repositório e instale as dependências
+### 1. Clone o repositório e instale as dependências, após isso rode o projeto
 
 ```bash
 git clone <seu-repositorio-url>
 cd cineweb
 npm install
+npx json-server --watch db.json --port 3000
+npm run dev
 ```

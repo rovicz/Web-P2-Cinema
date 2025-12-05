@@ -35,8 +35,7 @@ export function Home() {
   const sessoesDisponiveis = sessoes
     .filter((sessao) => new Date(sessao.dataHora) > new Date())
     .sort(
-      (a, b) =>
-        new Date(a.dataHora).getTime() - new Date(b.dataHora).getTime(),
+      (a, b) => new Date(a.dataHora).getTime() - new Date(b.dataHora).getTime(),
     );
 
   const heroFilme = filmesComSessao.length > 0 ? filmesComSessao[0] : null;
@@ -146,16 +145,24 @@ export function Home() {
                   className="list-group-item session-card mb-2"
                 >
                   <div className="d-flex w-100 justify-content-between">
-                    <h5 className="mb-1 text-primary">{filme?.titulo ?? "Filme não encontrado"}</h5>
-                    <span className="badge bg-light text-dark rounded-pill">
+                    <h5 className="mb-1 text-primary">
+                      {filme?.titulo ?? "Filme não encontrado"}
+                    </h5>
+                    <span className="badge bg-light text-primary rounded-pill">
                       {new Date(sessao.dataHora).toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}
                     </span>
                   </div>
-                  <p className="mb-1 text-muted">
-                    {new Date(sessao.dataHora).toLocaleDateString('pt-BR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} | Sala {sala?.numero ?? "?"}
+                  <p className="mb-1 text-primary">
+                    {new Date(sessao.dataHora).toLocaleDateString("pt-BR", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}{" "}
+                    | Sala {sala?.numero ?? "?"}
                   </p>
                 </div>
               );

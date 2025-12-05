@@ -67,17 +67,17 @@ export function Navbar() {
             border-bottom: 1px solid var(--bs-border-color);
           }
           .nav-link {
-            color: var(--bs-secondary);
+            color: var(--bs-primary);
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
           }
           .nav-link:hover {
-            color: var(--bs-body-color);
+            color: var(--bs-body-dark);
             background-color: var(--bs-light);
           }
           .nav-link.active {
-            color: var(--bs-body-color);
+            color: var(--bs-dark) !important;
             background-color: var(--bs-primary);
           }
           .navbar-brand {

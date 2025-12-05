@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Toaster } from "sonner";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Filmes } from "./pages/Filmes";
 import { Salas } from "./pages/Salas";
@@ -7,18 +6,24 @@ import { Sessoes } from "./pages/Sessoes";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Navbar />
-      <main className="container mt-4">
+      <div className="py-4">
         <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="container">
+                <h1>Bem-vindo ao CineWeb</h1>
+              </div>
+            }
+          />
           <Route path="/filmes" element={<Filmes />} />
           <Route path="/salas" element={<Salas />} />
           <Route path="/sessoes" element={<Sessoes />} />
-          <Route path="/" element={<Filmes />} />
         </Routes>
-      </main>
-      <Toaster richColors />
-    </Router>
+      </div>
+    </BrowserRouter>
   );
 }
 

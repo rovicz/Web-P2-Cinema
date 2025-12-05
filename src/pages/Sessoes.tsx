@@ -56,7 +56,7 @@ export function Sessoes() {
     }
   };
 
-  const venderIngresso = (sessaoId: number) => {
+  const venderIngresso = (sessaoId: string) => {
     toast("Qual tipo de ingresso deseja vender?", {
       action: {
         label: "Inteira (R$ 20)",
@@ -70,7 +70,7 @@ export function Sessoes() {
   };
 
   const processarVenda = async (
-    sessaoId: number,
+    sessaoId: string,
     tipo: string,
     valor: number,
   ) => {
@@ -89,7 +89,7 @@ export function Sessoes() {
     }
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     toast("Deseja realmente excluir esta sessão?", {
       action: {
         label: "Excluir",
@@ -113,9 +113,9 @@ export function Sessoes() {
     });
   };
 
-  const getNomeFilme = (id: number) =>
+  const getNomeFilme = (id: string) =>
     filmes.find((f) => f.id === id)?.titulo || "Desconhecido";
-  const getNumeroSala = (id: number) =>
+  const getNumeroSala = (id: string) =>
     salas.find((s) => s.id === id)?.numero || "?";
 
   return (

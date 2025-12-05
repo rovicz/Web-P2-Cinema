@@ -8,6 +8,15 @@
       "duracao": 120,
       "genero": "Ação",
       "dataEstreia": "2004-12-15"
+    },
+    {
+      "id": "7020",
+      "titulo": "Bastardos Inglorios",
+      "sinopse": "Durante a Segunda Guerra Mundial, na França, judeus americanos espalham o terror entre o terceiro Reich. Ao mesmo tempo, Shosanna, uma judia que fugiu dos nazistas, planeja vingança quando um evento em seu cinema reunirá os líderes do partido.",
+      "classificacao": "18",
+      "duracao": 260,
+      "genero": "Ação",
+      "dataEstreia": "2009-10-09"
     }
   ],
   "salas": [
@@ -15,6 +24,11 @@
       "id": "f158",
       "numero": 1,
       "capacidade": 50
+    },
+    {
+      "id": "16d3",
+      "numero": 2,
+      "capacidade": 100
     }
   ],
   "sessoes": [
@@ -23,12 +37,30 @@
       "filmeId": "e2eb",
       "salaId": "f158",
       "dataHora": "2026-02-15T15:12"
+    },
+    {
+      "id": "a34a",
+      "filmeId": "7020",
+      "salaId": "16d3",
+      "dataHora": "2025-12-15T22:00"
     }
   ],
   "ingressos": [
     {
       "id": "6344",
       "sessaoId": "ca30",
+      "tipo": "Meia",
+      "valor": 10
+    },
+    {
+      "id": "b532",
+      "sessaoId": "a34a",
+      "tipo": "Inteira",
+      "valor": 20
+    },
+    {
+      "id": "0128",
+      "sessaoId": "a34a",
       "tipo": "Meia",
       "valor": 10
     }

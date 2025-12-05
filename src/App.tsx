@@ -3,6 +3,7 @@ import { Navbar } from "./components/Navbar";
 import { Filmes } from "./pages/Filmes";
 import { Salas } from "./pages/Salas";
 import { Sessoes } from "./pages/Sessoes";
+import { Ingressos } from "./pages/Ingressos";
 import { Home } from "./pages/Home";
 import { Toaster } from "sonner";
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/filmes" element={<Filmes />} />
           <Route path="/salas" element={<Salas />} />
           <Route path="/sessoes" element={<Sessoes />} />
+          <Route path="/ingressos" element={<Ingressos />} />
         </Routes>
       </main>
       <Toaster richColors />
@@ -24,4 +26,3 @@ function App() {
 }
 
 export default App;
-

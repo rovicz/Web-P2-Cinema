@@ -57,6 +57,12 @@ export function Navbar() {
                 Sessões
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/ingressos" className={getLinkClass}>
+                <i className="bi bi-ticket-perforated me-2"></i>
+                Ingressos
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

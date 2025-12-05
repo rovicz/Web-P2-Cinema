@@ -37,7 +37,7 @@ export function Salas() {
     }
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     toast("Deseja realmente excluir esta sala?", {
       action: {
         label: "Excluir",

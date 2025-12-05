@@ -49,7 +49,7 @@ export function Filmes() {
     }
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     toast("Deseja realmente excluir este filme?", {
       action: {
         label: "Excluir",

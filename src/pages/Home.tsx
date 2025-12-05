@@ -84,7 +84,6 @@ export function Home() {
           transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
         .movie-card:hover {
-            transform: translateY(-5px);
             box-shadow: 0 8px 24px rgba(var(--bs-primary-rgb), 0.1);
         }
         .session-card {
@@ -113,7 +112,7 @@ export function Home() {
                 <div key={filme.id} className="card movie-card h-100">
                   <div className="card-body d-flex flex-column">
                     <h5 className="card-title">{filme.titulo}</h5>
-                    <p className="card-text text-muted small">
+                    <p className="card-text text-primary small">
                       {filme.genero} | {filme.duracao} min
                     </p>
                     <div className="mt-auto pt-3">

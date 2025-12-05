@@ -33,8 +33,8 @@ export function Sessoes() {
       setErrors({});
 
       const payload = {
-        filmeId: Number(dados.filmeId),
-        salaId: Number(dados.salaId),
+        filmeId: dados.filmeId,
+        salaId: dados.salaId,
         dataHora: dados.dataHora,
       };
 
@@ -80,7 +80,9 @@ export function Sessoes() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sessaoId, tipo, valor }),
       });
-      toast.success(`Ingresso (${tipo}) vendido! Valor: R$ ${valor.toFixed(2)}`);
+      toast.success(
+        `Ingresso (${tipo}) vendido! Valor: R$ ${valor.toFixed(2)}`,
+      );
     } catch (error) {
       toast.error("Falha ao vender ingresso. Tente novamente.");
       console.error(error);
@@ -187,7 +189,7 @@ export function Sessoes() {
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{getNomeFilme(sessao.filmeId)}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">
+                <h6 className="card-subtitle mb-2 text-primary">
                   Sala: {getNumeroSala(sessao.salaId)}
                 </h6>
                 <p className="card-text">

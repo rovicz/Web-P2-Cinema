@@ -19,11 +19,18 @@
   ],
   "sessoes": [
     {
-      "id": "5cbf",
-      "filmeId": null,
-      "salaId": null,
-      "dataHora": "2025-12-05T19:00"
+      "id": "ca30",
+      "filmeId": "e2eb",
+      "salaId": "f158",
+      "dataHora": "2026-02-15T15:12"
     }
   ],
-  "ingressos": []
+  "ingressos": [
+    {
+      "id": "6344",
+      "sessaoId": "ca30",
+      "tipo": "Meia",
+      "valor": 10
+    }
+  ]
 }

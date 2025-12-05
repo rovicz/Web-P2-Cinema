@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# 🎬 CineWeb - Sistema de Gestão de Cinema
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema web desenvolvido para o gerenciamento de operações diárias da rede de cinemas "CineWeb". [cite_start]Este projeto compõe o módulo administrativo do sistema, permitindo o cadastro de filmes, salas, agendamento de sessões e simulação de venda de ingressos[cite: 1, 6, 7].
 
-Currently, two official plugins are available:
+[cite_start]O projeto foi desenvolvido como atividade prática da disciplina de **Desenvolvimento Web Frontend**[cite: 2].
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias Utilizadas
 
-## React Compiler
+O projeto utiliza a stack moderna exigida na especificação, com a adição de bibliotecas de UI para melhor experiência do usuário:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [cite_start]**Core:** React + Vite (Template TypeScript) [cite: 53]
+- [cite_start]**Roteamento:** React Router DOM [cite: 53]
+- [cite_start]**Estilização:** Bootstrap 5 (Grid System & Componentes) [cite: 53, 92]
+- **Ícones:** Lucide React (Substituindo/Complementando Bootstrap Icons)
+- [cite_start]**Validação:** Zod (Schemas e validação de formulários) [cite: 54, 80]
+- **Feedback Visual:** Sonner (Toasts/Notificações)
+- [cite_start]**Backend Simulado:** Json-Server (API REST) [cite: 54]
 
-## Expanding the ESLint configuration
+## 📋 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+[cite_start]Conforme os requisitos funcionais[cite: 63], o sistema oferece:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### [cite_start]1. Gestão de Filmes (`/filmes`) [cite: 65]
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Listagem de todos os filmes cadastrados.
+- [cite_start]Cadastro de novos filmes com validação rigorosa (Título, Sinopse > 10 chars, Duração > 0, etc.) [cite: 81-86].
+- Exclusão de filmes.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### [cite_start]2. Gestão de Salas (`/salas`) [cite: 69]
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- [cite_start]Cadastro de salas com número e capacidade máxima[cite: 70].
+- Visualização da capacidade disponível.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### [cite_start]3. Agendamento de Sessões (`/sessoes`) [cite: 71]
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [cite_start]Vinculação entre **Filmes** e **Salas** existentes[cite: 73, 74, 76].
+- [cite_start]Validação de datas (não permite agendamento retroativo)[cite: 90].
+- Visualização detalhada das sessões agendadas.
+
+### [cite_start]4. Venda de Ingressos [cite: 95]
+
+- Funcionalidade integrada à listagem de sessões.
+- [cite_start]Simulação de venda (Inteira/Meia) com cálculo de valor[cite: 98].
+
+## 📦 Instalação e Execução
+
+Pré-requisitos: Certifique-se de ter o **Node.js** instalado em sua máquina.
+
+### 1. Clone o repositório e instale as dependências
+
+```bash
+git clone <seu-repositorio-url>
+cd cineweb
+npm install
 ```

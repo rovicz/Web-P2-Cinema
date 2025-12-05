@@ -1,6 +1,6 @@
-# 🎬 CineWeb - Sistema de Gestão de Cinema
+# 🎬 Cinemarket - Sistema de Gestão de Cinema
 
-Sistema web desenvolvido para o gerenciamento de operações diárias da rede de cinemas "CineWeb". Este projeto compõe o módulo administrativo do sistema, permitindo o cadastro de filmes, salas, agendamento de sessões e simulação de venda de ingressos.
+Sistema web desenvolvido para o gerenciamento de operações diárias da rede de cinemas "Cinemarket". Este projeto compõe o módulo administrativo do sistema, permitindo o cadastro de filmes, salas, agendamento de sessões e simulação de venda de ingressos.
 
 O projeto foi desenvolvido como atividade prática da disciplina de **Desenvolvimento Web Frontend**.
 
@@ -50,7 +50,7 @@ Pré-requisitos: Certifique-se de ter o **Node.js** instalado em sua máquina.
 
 ```bash
 git clone <seu-repositorio-url>
-cd cineweb
+cd Cinemarket
 npm install
 npx json-server --watch db.json --port 3000
 npm run dev

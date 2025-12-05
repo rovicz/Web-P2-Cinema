@@ -14,7 +14,7 @@ export function Navbar() {
       <div className="container">
         <NavLink className="navbar-brand d-flex align-items-center" to="/">
           <i className="bi bi-camera-reels me-2 fs-4"></i>
-          <span className="fs-4">CineWeb</span>
+          <span className="fs-4">Cinemarket</span>
         </NavLink>
         <button
           className="navbar-toggler"

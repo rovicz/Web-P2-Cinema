@@ -1,0 +1,95 @@
+import { useState, useEffect } from "react";
+import { z } from "zod";
+import { toast } from "sonner";
+import { type Sala, salaSchema } from "../types";
+
+export function Salas() {
+  const [salas, setSalas] = useState<Sala[]>([]);
+  const [formData, setFormData] = useState({ numero: 0, capacidade: 0 });
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  useEffect(() => {
+    fetch("http://localhost:3000/salas")
+      .then((r) => r.json())
+      .then(setSalas);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const dadosValidos = salaSchema.parse(formData);
+      setErrors({});
+      await fetch("http://localhost:3000/salas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosValidos),
+      });
+      toast.success("Sala cadastrada!");
+      window.location.reload();
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        const fieldErrors: { [key: string]: string } = {};
+        err.issues.forEach((error) => {
+          fieldErrors[error.path[0] as string] = error.message;
+        });
+        setErrors(fieldErrors);
+      }
+    }
+  };
+
+  return (
+    <div className="container">
+      <h2>Gerenciar Salas</h2>
+      <form onSubmit={handleSubmit} className="card p-3 mb-4">
+        <div className="row">
+          <div className="col-md-6">
+            <label className="form-label">Número da Sala</label>
+            <input
+              type="number"
+              className={`form-control ${errors.numero ? "is-invalid" : ""}`}
+              onChange={(e) =>
+                setFormData({ ...formData, numero: Number(e.target.value) })
+              }
+            />
+            {errors.numero && (
+              <div className="invalid-feedback">{errors.numero}</div>
+            )}
+          </div>
+          <div className="col-md-6">
+            <label className="form-label">Capacidade</label>
+            <input
+              type="number"
+              className={`form-control ${
+                errors.capacidade ? "is-invalid" : ""
+              }`}
+              onChange={(e) =>
+                setFormData({ ...formData, capacidade: Number(e.target.value) })
+              }
+            />
+            {errors.capacidade && (
+              <div className="invalid-feedback">{errors.capacidade}</div>
+            )}
+          </div>
+          <div className="col-12 mt-3">
+            <button type="submit" className="btn btn-primary">
+              Salvar
+            </button>
+          </div>
+        </div>
+      </form>
+      <ul className="list-group">
+        {salas.map((sala) => (
+          <li
+            key={sala.id}
+            className="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Sala {sala.numero}
+            <span className="badge bg-secondary rounded-pill">
+              Cap: {sala.capacidade}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}

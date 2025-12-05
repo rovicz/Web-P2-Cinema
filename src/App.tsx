@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import { Navbar } from "./components/Navbar";
 import { Filmes } from "./pages/Filmes";
+import { Salas } from "./pages/Salas";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <main className="container mt-4">
         <Routes>
           <Route path="/filmes" element={<Filmes />} />
+          <Route path="/salas" element={<Salas />} />
           <Route path="/" element={<Filmes />} />
         </Routes>
       </main>
